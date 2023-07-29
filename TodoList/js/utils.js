@@ -45,4 +45,11 @@ function showUserContent(){
 function showAuth(){
   hideItem(userContent)
   showItem(auth)
+<<<<<<< HEAD
+=======
+}
+
+function signout(){
+  firebase.auth().signOut()
+>>>>>>> master
 }

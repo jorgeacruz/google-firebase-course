@@ -61,4 +61,17 @@ p {
 
 .alternative {
   background-color: #f60;
+<<<<<<< HEAD
+=======
+}
+.btsair {
+  background: #4c4;
+  padding: 4px;
+}
+#loading {
+  position:absolute;
+  top:calc(50% - 100px);
+  left: calc(50% - 100px);
+  z-index: 1;
+>>>>>>> master
 }
