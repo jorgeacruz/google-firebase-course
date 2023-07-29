@@ -49,4 +49,6 @@ function showAuth(){
 
 function signout(){
   firebase.auth().signOut()
+  authForm.email.value = ''
+  authForm.password.value = ''
 }
