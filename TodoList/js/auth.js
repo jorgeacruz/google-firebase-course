@@ -22,7 +22,7 @@ authForm.onsubmit = function (event) {
     function(user){
       hideItem(loading)
       if(user){
-        showUserContent()
+        showUserContent(user)
       } else {
         showAuth()
       }
