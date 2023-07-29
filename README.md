@@ -1,2 +1,2 @@
-# google-firebase-course
+# Google Firebase 
 Projeto do Curso de Google Firebase (UDEMY)
