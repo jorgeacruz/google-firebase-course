@@ -1,5 +1,6 @@
 authForm.onsubmit = function (event) {
     event.preventDefault()
+    showItem(loading)
     if (authForm.submitAuthForm.innerHTML == 'Acessar') {
       firebase.auth().signInWithEmailAndPassword(authForm.email.value, authForm.password.value)
       .catch(function (error) {
@@ -18,6 +19,7 @@ authForm.onsubmit = function (event) {
 
   firebase.auth().onAuthStateChanged(
     function(user){
+      hideItem(loading)
       if(user){
         console.log('Usuário autenticado')
         console.log(user)
