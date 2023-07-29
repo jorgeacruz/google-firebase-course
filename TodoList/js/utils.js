@@ -46,3 +46,7 @@ function showAuth(){
   hideItem(userContent)
   showItem(auth)
 }
+
+function signout(){
+  firebase.auth().signOut()
+}

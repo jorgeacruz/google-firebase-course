@@ -62,3 +62,13 @@ p {
 .alternative {
   background-color: #f60;
 }
+.btsair {
+  background: #4c4;
+  padding: 4px;
+}
+#loading {
+  position:absolute;
+  top:calc(50% - 100px);
+  left: calc(50% - 100px);
+  z-index: 1;
+}
