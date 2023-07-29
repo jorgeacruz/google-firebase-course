@@ -1,3 +1,4 @@
+// tratamento dos dados do formulário de acesso
 authForm.onsubmit = function (event) {
     event.preventDefault()
     showItem(loading)
@@ -16,15 +17,22 @@ authForm.onsubmit = function (event) {
   
     }
   }
-
+  // Verifica se user esta ou não autenticado
   firebase.auth().onAuthStateChanged(
     function(user){
       hideItem(loading)
       if(user){
-        console.log('Usuário autenticado')
-        console.log(user)
+        showUserContent()
       } else {
-        console.log('Usuário não autenticado')
+        showAuth()
       }
+    }
+  )
+  
+  // função de SignOut 
+  firebase.auth().signOut().catch(
+    function(error){
+      console.log('Falha ao sair da conta')
+      console.log(error)
     }
   )
