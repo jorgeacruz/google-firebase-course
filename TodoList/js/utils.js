@@ -42,7 +42,7 @@ function showUserContent(){
 }
 
 //Oculta conteudo ao usuário não autenticado
-function showUserContent(){
+function showAuth(){
   hideItem(userContent)
   showItem(auth)
 }
