@@ -1,3 +1,6 @@
+//traduz para portugues a autenticaçao
+firebase.languageCode = 'pt-BR'
+
 // tratamento dos dados do formulário de acesso
 authForm.onsubmit = function (event) {
     event.preventDefault()
@@ -13,6 +16,8 @@ authForm.onsubmit = function (event) {
       .catch(function (error) {
         console.log('Falha no cadastro')
         alert('Erro ao Cadastrar')
+      }).finally(function(){
+        hideItem(loading)
       })
   
     }
@@ -36,3 +41,19 @@ authForm.onsubmit = function (event) {
       console.log(error)
     }
   )
+
+  //funçao usuario verificar email
+  function sendEmailVerification(){
+    showItem(loading)
+    var user = firebase.auth().currentUser
+    user.sendEmailVerification()
+    .then( function() {
+      alert('Email de verificação foi enviado para' + user.email + 'Verifique sua caixa de entrada')
+    })
+    .catch(function(error) {
+      alert('Error ao enviar a mensagem de verificação')
+      console.log(error)
+    }).finally(function(){
+      hideItem(loading)
+    })
+  }

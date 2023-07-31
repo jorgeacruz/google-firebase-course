@@ -9,6 +9,11 @@ var loading = document.getElementById('loading')
 var auth = document.getElementById('auth')
 var userContent = document.getElementById('userContent')
 var userEmail = document.getElementById('userEmail')
+var sendEmailVerificationDiv = document.getElementById('sendEmailVerificationDiv')
+var emailVerified = document.getElementById('emailVerified')
+
+
+
 
 // Alterar o formulário de autenticação para o cadastro de novas contas
 function toggleToRegister() {
@@ -38,6 +43,13 @@ function hideItem(element) {
 
 //Mostrar conteudo ao usuário
 function showUserContent(user){
+  if( user.emailVerified == true ){
+  hideItem(sendEmailVerificationDiv)
+  emailVerified.innerHTML = 'Email Verificado'
+  } else {
+  showItem(sendEmailVerificationDiv)
+  emailVerified.innerHTML = 'Email não Verificado '
+  }
   userEmail.innerHTML = user.email
   hideItem(auth)
   showItem(userContent)
@@ -47,16 +59,13 @@ function showUserContent(user){
 function showAuth(){
   hideItem(userContent)
   showItem(auth)
-<<<<<<< HEAD
-=======
+
 }
 
 function signout(){
   firebase.auth().signOut()
-<<<<<<< HEAD
->>>>>>> master
-=======
+
   authForm.email.value = ''
   authForm.password.value = ''
->>>>>>> master
+
 }
