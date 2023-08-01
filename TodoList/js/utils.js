@@ -5,85 +5,75 @@ var register = document.getElementById('register')
 var access = document.getElementById('access')
 
 var loading = document.getElementById('loading')
+
 var auth = document.getElementById('auth')
 var userContent = document.getElementById('userContent')
+
 var userEmail = document.getElementById('userEmail')
+
 var sendEmailVerificationDiv = document.getElementById('sendEmailVerificationDiv')
 var emailVerified = document.getElementById('emailVerified')
 
 var passwordReset = document.getElementById('passwordReset')
 
+var userName = document.getElementById('userName')
+var userImg = document.getElementById('userImg')
+
+
 // Alterar o formulário de autenticação para o cadastro de novas contas
 function toggleToRegister() {
   authForm.submitAuthForm.innerHTML = 'Cadastrar conta'
   authFormTitle.innerHTML = 'Insira seus dados para se cadastrar'
-  hideItem(register) // esconder atalho registro
-  hideItem(passwordReset) // esconder passwordReset
-  showItem(access) // mostrar atalho para acesso
+  hideItem(register) // Esconder atalho para cadastrar conta
+  hideItem(passwordReset) // Esconder a opção de redefinição de senha
+  showItem(access) // Mostrar atalho para acessar conta
 }
 
 // Alterar o formulário de autenticação para o acesso de contas já existentes
 function toggleToAccess() {
   authForm.submitAuthForm.innerHTML = 'Acessar'
   authFormTitle.innerHTML = 'Acesse a sua conta para continuar'
-  hideItem(access) 
-  showItem(passwordReset)
-  showItem(register)
+  hideItem(access) // Esconder atalho para acessar conta
+  showItem(passwordReset) // Mostrar a opção de redefinição de senha
+  showItem(register) // Mostrar atalho para cadastrar conta
 }
 
-// Simpplifica a exibição de elementos da página
+// Simplifica a exibição de elementos da página
 function showItem(element) {
   element.style.display = 'block'
 }
 
-// Simpplifica a remoção de elementos da página
+// Simplifica a remoção de elementos da página
 function hideItem(element) {
   element.style.display = 'none'
 }
 
-//Mostrar conteudo ao usuário
-function showUserContent(user){
-  if( user.emailVerified == true ){
-  hideItem(sendEmailVerificationDiv)
-  emailVerified.innerHTML = 'Email Verificado'
+// Mostrar conteúdo para usuários autenticados
+function showUserContent(user) {
+  console.log(user)
+  if (user.emailVerified) {
+    emailVerified.innerHTML = 'E-mail verificado'
+    hideItem(sendEmailVerificationDiv)
   } else {
-  showItem(sendEmailVerificationDiv)
-  emailVerified.innerHTML = 'Email não Verificado '
+    emailVerified.innerHTML = 'E-mail não verificado'
+    showItem(sendEmailVerificationDiv)
   }
+  userImg.src = user.photoURL ? user.photoURL : 'img/unknownUser.png'
+  userName.innerHTML = user.displayName
   userEmail.innerHTML = user.email
   hideItem(auth)
   showItem(userContent)
 }
 
-//Oculta conteudo ao usuário não autenticado
-function showAuth(){
+// Mostrar conteúdo para usuários não autenticados
+function showAuth() {
+  authForm.email.value = ''
+  authForm.password.value = ''
   hideItem(userContent)
   showItem(auth)
 }
-// função de deslogar
-function signout(){
-  firebase.auth().signOut()
 
-  authForm.email.value = ''
-  authForm.password.value = ''
-
-}
-//função de redefinir senha
-function sendPasswordResetEmail(){
-  var email = prompt('Redefinição de senha de email', authForm.email.value)
-  if(email){
-    showItem(loading)
-    firebase.auth().sendPasswordResetEmail(email, actionCodeSettings)
-    .then(function(){
-      alert('Email de redefinição de senha' + email + '.');
-    })
-    .cacth(function(error){
-      alert('Erro ao enviar o email de redefinição de senha')
-      console.log(error)
-    }).finally(function(){
-      hideItem(loading)
-    }) 
-  } else {
-    alert('Precisa preencher o campo de email');
-  }
+// Atributos extras de configuração de e-mail
+var actionCodeSettings = {
+  url: 'http://127.0.0.1:5500/'
 }

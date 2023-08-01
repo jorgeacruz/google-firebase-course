@@ -1,12 +1,12 @@
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyB-dRTWGQlWez1r9xTkq9oeJZuRD6iOH5w",
-  authDomain: "todolist-f7c87.firebaseapp.com",
-  projectId: "todolist-f7c87",
-  storageBucket: "todolist-f7c87.appspot.com",
-  messagingSenderId: "791301940291",
-  appId: "1:791301940291:web:214ea031b157a40870a0f6",
+var firebaseConfig = {
+  apiKey: "AIzaSyCvEv7AropwWlIEC-w5c3JgprOPxjA8-kM",
+  authDomain: "todolist-84473.firebaseapp.com",
+  databaseURL: "https://todolist-84473.firebaseio.com",
+  projectId: "todolist-84473",
+  storageBucket: "todolist-84473.appspot.com",
+  messagingSenderId: "1009074245486",
+  appId: "1:1009074245486:web:f573ce9d33c653b28ebb7f"
 };
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

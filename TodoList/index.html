@@ -7,43 +7,38 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-  
-
   <div id="app">
-   
-<!---  Loading de carregamento -->
-<div id="loading">
-  <img src="img/loading.gif" alt="" />
-</div>
-    <!--Conteúdo destinado para usuários não autenticados-->
-    <div id="auth" class="center">
-      <!--Formulário de autenticação-->
-
-       <!--Logotipo do TodoList-->
+    <!--Logotipo do TodoList-->
     <div class="center">
       <img src="img/todoList.png">
     </div>
 
-    
+    <!--Feedback de carregamento (loading)-->
+    <div id="loading">
+      <img src="img/loading.gif" alt="Animação de carregamento">
+    </div>
+
+    <!--Conteúdo destinado para usuários não autenticados-->
+    <div id="auth" class="center">
+      <!--Formulário de autenticação-->
       <form id="authForm">
         <h3 id="authFormTitle">Acesse a sua conta para continuar</h3>
 
         <label for="email">E-mail: </label>
-        <input type="email" placeholder="Digite seu email" id="email" >
+        <input type="email" placeholder="E-mail" id="email">
 
         <label for="password">Senha: </label>
-        <input type="password" placeholder="Digite sua senha" id="password">
+        <input type="password" placeholder="Senha" id="password">
 
         <button type="submit" id="submitAuthForm">Acessar</button>
       </form>
 
-        <!--Possibilita redefinir a senhas-->
-        <p id="passwordReset">
-          Esqueceu sua senha?
-          <button  class="alternative" onclick="sendPasswordResetEmail">Redefinir minha senha</button>
-        </p>
-  
+      <!--Possibilita a redefiniação de senha-->
+      <p id="passwordReset">
+        Esqueceu a senha?
+        <button class="alternative" onclick="sendPasswordResetEmail()">Redefinir minha senha</button>
+      </p>
+
       <!--Alternar o fomulário de autenticação para o cadastro de novas contas-->
       <p id="register">
         Não possui uma conta?
@@ -55,26 +50,27 @@
         Já possui uma conta?
         <button onclick="toggleToAccess()" class="alternative">Acesse a sua conta</button>
       </p>
+
+      <p>
+        Ou acesse usando:<br>
+        <img src="img/google.png" alt="Logotipo do Google" onclick="signInWithGoogle()">
+      </p>
     </div>
 
-    <!-- Mostra conteudo se user estiver logado -->
+    <!--Conteúdo destinado para usuários autenticados-->
     <div id="userContent" class="startHidden">
-      <div class="center">
-        <img src="img/todoList.png">
-      </div>
       <hr>
       <div id="userInfo" class="center">
+        <img id="userImg">
+        <p id="userName"></p>
         <p id="userEmail"></p>
         <p id="emailVerified"></p>
         <div id="sendEmailVerificationDiv">
-          <button class="alternative" onclick="sendEmailVerification">verificar Email</button>
+          <button class="alternative" onclick="sendEmailVerification()">Verificar e-mail</button>
         </div>
-
-        <button name="sair" class="btsair" onclick="signout()">Sair</button>
-
+        <button class="alternative" onclick="signOut()">Sair</button>
       </div>
     </div>
-
   </div>
 
   <!--Recursos do Firebase-->
