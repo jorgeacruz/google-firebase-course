@@ -48,10 +48,10 @@ authForm.onsubmit = function (event) {
     var user = firebase.auth().currentUser
     user.sendEmailVerification()
     .then( function() {
-      alert('Email de verificação foi enviado para' + user.email + 'Verifique sua caixa de entrada')
+      alert('Email de verificação foi enviado para' + user.email + 'Verifique sua caixa de entrada');
     })
     .catch(function(error) {
-      alert('Error ao enviar a mensagem de verificação')
+      alert('Error ao enviar a mensagem de verificação');
       console.log(error)
     }).finally(function(){
       hideItem(loading)
