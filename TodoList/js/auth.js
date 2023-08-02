@@ -144,3 +144,24 @@ function updateUserName() {
     alert("Nome de usuário não pode estar em branco");
   }
 }
+
+//Deletando conta do usuário
+function deleUserAccount(){
+  var confirmation = confirm('Deseja excluir sua conta?')
+  showItem(loading)
+  if(confirmation){
+    firebase
+      .auth()
+      .currentUser
+      .delete()
+      .then(function(){
+        alert('Conta Apagada com Sucesso!')
+      })
+      .catch( function(error){
+        alert('Erro ao remover sua conta')
+        console.log(error)
+      }).finally(function(){
+        hideItem(loading)
+      })
+  }
+}
